@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import type { SystemSettings } from '../types';
-import { Disc, User, Mail, Phone, Lock, AlertCircle, CheckCircle2 } from 'lucide-react';
+import { User, Mail, Phone, Lock, AlertCircle, CheckCircle2 } from 'lucide-react';
 
 interface RegisterPageProps {
   settings: SystemSettings;

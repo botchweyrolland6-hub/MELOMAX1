@@ -8,7 +8,6 @@ import {
   PackageCheck,
   Settings as SettingsIcon,
   LogOut,
-  FileSpreadsheet,
   History,
   Store,
   ChevronLeft,

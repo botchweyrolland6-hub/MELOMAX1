@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import type { SystemSettings } from '../types';
-import { Disc, LogOut, User as UserIcon, Shield, Menu, X, Phone, Tag, LayoutDashboard, ShoppingBag } from 'lucide-react';
+import { LogOut, User as UserIcon, Shield, Menu, X, Phone, Tag, LayoutDashboard, ShoppingBag } from 'lucide-react';
 
 interface NavbarProps {
   settings: SystemSettings;
