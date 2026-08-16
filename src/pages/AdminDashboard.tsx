@@ -180,7 +180,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                         <img
                           src={tyre.image_url}
                           alt={tyre.name}
-                          className="w-8 h-8 rounded-lg object-cover border border-slate-800"
+                          className="w-8 h-8 rounded-lg object-contain p-0.5 bg-slate-950 border border-slate-800 shrink-0"
                         />
                         <div>
                           <span className="block">{tyre.name}</span>

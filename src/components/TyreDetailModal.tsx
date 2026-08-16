@@ -31,11 +31,11 @@ export const TyreDetailModal: React.FC<TyreDetailModalProps> = ({
         </button>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="relative rounded-2xl overflow-hidden bg-slate-900 border border-slate-800 flex items-center justify-center group min-h-[240px]">
+          <div className="relative rounded-2xl overflow-hidden bg-slate-950/90 border border-slate-800 p-4 flex items-center justify-center group min-h-[240px]">
             <img
               src={tyre.image_url}
               alt={tyre.name}
-              className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+              className="max-h-56 max-w-full object-contain group-hover:scale-105 transition duration-500"
             />
             <div className="absolute top-3 left-3">
               <StatusBadge status={tyre.status} stock={tyre.stock_quantity} />

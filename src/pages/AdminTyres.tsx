@@ -182,7 +182,7 @@ export const AdminTyres: React.FC<AdminTyresProps> = ({
                         <img
                           src={tyre.image_url}
                           alt={tyre.name}
-                          className="w-10 h-10 rounded-xl object-cover border border-slate-800 shrink-0"
+                          className="w-10 h-10 rounded-xl object-contain p-1 bg-slate-950 border border-slate-800 shrink-0"
                         />
                         <div>
                           <span className="font-bold text-white block group-hover:text-amber-400 transition">

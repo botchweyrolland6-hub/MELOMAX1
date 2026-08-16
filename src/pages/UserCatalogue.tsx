@@ -161,11 +161,11 @@ export const UserCatalogue: React.FC<UserCatalogueProps> = ({
               key={tyre.id}
               className="glass-panel rounded-3xl border border-slate-800/80 overflow-hidden flex flex-col justify-between hover:border-amber-500/40 hover:-translate-y-1 transition duration-300 shadow-xl group"
             >
-              <div className="relative h-44 sm:h-48 bg-slate-900 overflow-hidden">
+              <div className="relative h-48 sm:h-52 bg-slate-950/80 p-4 overflow-hidden flex items-center justify-center border-b border-slate-800/80">
                 <img
                   src={tyre.image_url}
                   alt={tyre.name}
-                  className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                  className="max-h-full max-w-full object-contain group-hover:scale-105 transition duration-500"
                 />
                 <div className="absolute top-3 left-3">
                   <StatusBadge status={tyre.status} stock={tyre.stock_quantity} />
