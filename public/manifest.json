@@ -1,0 +1,16 @@
+{
+  "short_name": "MeloMax Tyres",
+  "name": "MeloMax Ventures — Tyre Management System",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "type": "image/png",
+      "sizes": "192x192 512x512"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#030712",
+  "theme_color": "#030712",
+  "display": "standalone",
+  "orientation": "portrait"
+}
