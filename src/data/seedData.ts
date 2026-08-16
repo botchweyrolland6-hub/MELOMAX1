@@ -267,7 +267,7 @@ export const INITIAL_USERS: User[] = [
 export const INITIAL_SETTINGS: SystemSettings = {
   company_name: 'MeloMax Ventures',
   company_logo: '/logo.png',
-  contact_email: 'info@melomaxventures.com',
+  contact_email: 'melomaxventures@gmail.com',
   contact_phone: '0249389181',
   currency: 'GHS',
   low_stock_threshold: 5,

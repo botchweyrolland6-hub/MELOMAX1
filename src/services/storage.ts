@@ -1,7 +1,7 @@
 import type { Category, Tyre, User, SystemSettings, AuditLog, InventoryStats } from '../types';
 import { INITIAL_CATEGORIES, INITIAL_TYRES, INITIAL_USERS, INITIAL_SETTINGS, INITIAL_AUDIT_LOGS } from '../data/seedData';
 
-const DB_VERSION = 'v7_update_phone';
+const DB_VERSION = 'v8_footer_location_update';
 
 const KEYS = {
   VERSION: 'melomax_db_version',

@@ -404,13 +404,16 @@ const MainAppContent: React.FC = () => {
       </div>
 
       {/* FOOTER */}
-      <footer className="bg-slate-950 border-t border-slate-900 py-8 text-center text-xs text-slate-400">
+      <footer className="bg-slate-950/80 backdrop-blur-md border-t border-slate-900 py-8 text-center text-xs text-slate-400">
         <div className="max-w-7xl mx-auto px-4 space-y-2">
           <p className="font-bold text-slate-200">
             © {new Date().getFullYear()} {settings.company_name} — Professional Tyre Management System
           </p>
           <p className="text-[11px] text-slate-400">
-            Accra, Ghana | {settings.contact_email} | {settings.contact_phone}
+            Takoradi, Ghana | {settings.contact_email} | {settings.contact_phone}
+          </p>
+          <p className="text-[11px] text-amber-400 font-semibold pt-1">
+            Developed by <span className="font-extrabold text-amber-300">Rolland Botchwey</span>
           </p>
         </div>
       </footer>
