@@ -68,7 +68,8 @@ export const AdminStockUpdate: React.FC<AdminStockUpdateProps> = ({
         </div>
       )}
 
-      <div className="glass-panel rounded-3xl border border-slate-800 overflow-hidden shadow-xl">
+      {/* DESKTOP TABLE */}
+      <div className="hidden md:block glass-panel rounded-3xl border border-slate-800 overflow-hidden shadow-xl">
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse text-xs">
             <thead>
@@ -91,7 +92,14 @@ export const AdminStockUpdate: React.FC<AdminStockUpdateProps> = ({
 
                 return (
                   <tr key={tyre.id} className="hover:bg-slate-900/50 transition">
-                    <td className="py-3 px-4 font-bold text-white">{tyre.name}</td>
+                    <td className="py-3 px-4 font-bold text-white flex items-center space-x-3">
+                      <img
+                        src={tyre.image_url}
+                        alt=""
+                        className="w-8 h-8 rounded-lg object-contain p-0.5 bg-slate-950 border border-slate-800 shrink-0"
+                      />
+                      <span>{tyre.name}</span>
+                    </td>
                     <td className="py-3 px-4 font-mono font-bold text-amber-400">{tyre.size}</td>
                     <td className="py-3 px-4 text-slate-300">{tyre.brand}</td>
                     <td className="py-3 px-4 font-extrabold text-white font-mono">{tyre.stock_quantity}</td>
@@ -127,6 +135,61 @@ export const AdminStockUpdate: React.FC<AdminStockUpdateProps> = ({
             </tbody>
           </table>
         </div>
+      </div>
+
+      {/* MOBILE CARD LIST */}
+      <div className="block md:hidden space-y-3">
+        {filtered.map((tyre) => {
+          const currentVal =
+            modifiedStocks[tyre.id] !== undefined
+              ? modifiedStocks[tyre.id]
+              : tyre.stock_quantity;
+
+          return (
+            <div key={tyre.id} className="glass-panel p-4 rounded-3xl border border-slate-800 space-y-3 shadow-lg">
+              <div className="flex items-center space-x-3">
+                <img
+                  src={tyre.image_url}
+                  alt={tyre.name}
+                  className="w-14 h-14 rounded-xl object-contain p-1 bg-slate-950 border border-slate-800 shrink-0"
+                />
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-sm font-black text-white truncate">{tyre.name}</h3>
+                  <div className="flex items-center space-x-2 mt-0.5">
+                    <span className="px-2 py-0.5 rounded bg-slate-950 text-amber-400 font-mono font-bold text-[10px] border border-amber-500/20">
+                      {tyre.size}
+                    </span>
+                    <StatusBadge status={tyre.status} stock={tyre.stock_quantity} />
+                  </div>
+                </div>
+              </div>
+
+              <div className="pt-2 border-t border-slate-800 flex items-center justify-between">
+                <div>
+                  <span className="text-[10px] text-slate-400 uppercase font-bold block">Current Stock</span>
+                  <span className="text-base font-black text-white font-mono">{tyre.stock_quantity} units</span>
+                </div>
+
+                <div className="flex items-center space-x-2">
+                  <input
+                    type="number"
+                    min="0"
+                    value={currentVal}
+                    onChange={(e) => handleLocalStockChange(tyre.id, parseInt(e.target.value, 10) || 0)}
+                    className="w-20 px-2.5 py-1.5 bg-slate-950 border border-slate-700 rounded-xl font-mono font-bold text-white text-center focus:outline-none focus:border-amber-500 text-xs"
+                  />
+                  <button
+                    onClick={() => handleApplySingle(tyre.id, tyre.stock_quantity)}
+                    className="px-3 py-1.5 bg-amber-500 text-slate-950 font-extrabold rounded-xl text-xs flex items-center space-x-1 shadow-md shadow-amber-500/20"
+                  >
+                    <Save className="w-3.5 h-3.5" />
+                    <span>Save</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

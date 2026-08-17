@@ -158,7 +158,8 @@ export const AdminTyres: React.FC<AdminTyresProps> = ({
         </div>
       </div>
 
-      <div className="glass-panel rounded-3xl border border-slate-800 overflow-hidden shadow-xl">
+      {/* DESKTOP TABLE VIEW */}
+      <div className="hidden md:block glass-panel rounded-3xl border border-slate-800 overflow-hidden shadow-xl">
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
@@ -278,6 +279,95 @@ export const AdminTyres: React.FC<AdminTyresProps> = ({
             </tbody>
           </table>
         </div>
+      </div>
+
+      {/* MOBILE PRODUCT CARD GRID VIEW (NO SCROLLING TO THE RIGHT NEEDED!) */}
+      <div className="block md:hidden space-y-4">
+        {filteredTyres.length > 0 ? (
+          filteredTyres.map((tyre) => (
+            <div key={tyre.id} className="glass-panel p-4 rounded-3xl border border-slate-800 space-y-3 shadow-xl">
+              {/* Tyre Image Prominently at Top */}
+              <div className="relative h-44 bg-slate-950/90 rounded-2xl p-3 border border-slate-800 flex items-center justify-center overflow-hidden">
+                <img
+                  src={tyre.image_url}
+                  alt={tyre.name}
+                  className="max-h-full max-w-full object-contain"
+                />
+                <div className="absolute top-2 left-2">
+                  <StatusBadge status={tyre.status} stock={tyre.stock_quantity} />
+                </div>
+                <div className="absolute bottom-2 right-2 bg-slate-950/90 backdrop-blur px-2.5 py-1 rounded-lg text-xs font-mono font-bold text-amber-400 border border-amber-500/20">
+                  {tyre.size}
+                </div>
+              </div>
+
+              {/* Title & Category */}
+              <div>
+                <h3 className="text-base font-black text-white">{tyre.name}</h3>
+                <div className="flex items-center justify-between text-xs text-slate-400 mt-1">
+                  <span>Brand: <strong className="text-slate-200">{tyre.brand}</strong></span>
+                  <span className="text-amber-400 font-semibold">{tyre.category_name || 'General'}</span>
+                </div>
+              </div>
+
+              {/* Price & Stock Adjustment */}
+              <div className="pt-2 border-t border-slate-800/80 flex items-center justify-between">
+                <div>
+                  <span className="text-[10px] text-slate-400 uppercase font-bold block">Price</span>
+                  <span className="text-base font-black text-amber-400">
+                    {settings.currency} {tyre.price.toLocaleString('en-US', { minimumFractionDigits: 2 })}
+                  </span>
+                </div>
+
+                <div className="flex items-center space-x-2 bg-slate-900 p-1 rounded-xl border border-slate-800">
+                  <button
+                    onClick={() => onUpdateStock(tyre.id, Math.max(0, tyre.stock_quantity - 1))}
+                    className="w-7 h-7 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 font-black flex items-center justify-center text-sm"
+                  >
+                    -
+                  </button>
+                  <span className="w-8 text-center font-black text-white font-mono text-xs">{tyre.stock_quantity}</span>
+                  <button
+                    onClick={() => onUpdateStock(tyre.id, tyre.stock_quantity + 1)}
+                    className="w-7 h-7 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 font-black flex items-center justify-center text-sm"
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+
+              {/* Mobile Action Buttons */}
+              <div className="pt-2 border-t border-slate-800/80 grid grid-cols-3 gap-2 text-xs">
+                <button
+                  onClick={() => onViewTyre(tyre)}
+                  className="py-2 bg-slate-900 hover:bg-slate-800 text-slate-200 font-bold rounded-xl flex items-center justify-center space-x-1 border border-slate-800"
+                >
+                  <Eye className="w-3.5 h-3.5" />
+                  <span>View</span>
+                </button>
+                <button
+                  onClick={() => onEditTyre(tyre)}
+                  className="py-2 bg-amber-500/10 hover:bg-amber-500 text-amber-400 hover:text-slate-950 font-bold rounded-xl flex items-center justify-center space-x-1 border border-amber-500/20"
+                >
+                  <Edit className="w-3.5 h-3.5" />
+                  <span>Edit</span>
+                </button>
+                <button
+                  onClick={() => onDeleteTyre(tyre.id, tyre.name)}
+                  className="py-2 bg-rose-500/10 hover:bg-rose-500 text-rose-400 hover:text-white font-bold rounded-xl flex items-center justify-center space-x-1 border border-rose-500/20"
+                >
+                  <Trash2 className="w-3.5 h-3.5" />
+                  <span>Delete</span>
+                </button>
+              </div>
+            </div>
+          ))
+        ) : (
+          <div className="py-12 text-center text-slate-400 space-y-3 glass-panel p-6 rounded-3xl border border-slate-800">
+            <Package className="w-12 h-12 mx-auto text-slate-600" />
+            <p className="text-sm font-semibold">No tyres found matching your search or filters.</p>
+          </div>
+        )}
       </div>
     </div>
   );
