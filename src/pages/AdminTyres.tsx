@@ -181,8 +181,9 @@ export const AdminTyres: React.FC<AdminTyresProps> = ({
                     <td className="py-3 px-4">
                       <div className="flex items-center space-x-3">
                         <img
-                          src={tyre.image_url}
+                          src={tyre.image_url || '/tyre1.png'}
                           alt={tyre.name}
+                          onError={(e) => { (e.target as HTMLImageElement).src = '/tyre1.png'; }}
                           className="w-10 h-10 rounded-xl object-contain p-1 bg-slate-950 border border-slate-800 shrink-0"
                         />
                         <div>
@@ -289,8 +290,9 @@ export const AdminTyres: React.FC<AdminTyresProps> = ({
               {/* Tyre Image Prominently at Top */}
               <div className="relative h-44 bg-slate-950/90 rounded-2xl p-3 border border-slate-800 flex items-center justify-center overflow-hidden">
                 <img
-                  src={tyre.image_url}
+                  src={tyre.image_url || '/tyre1.png'}
                   alt={tyre.name}
+                  onError={(e) => { (e.target as HTMLImageElement).src = '/tyre1.png'; }}
                   className="max-h-full max-w-full object-contain"
                 />
                 <div className="absolute top-2 left-2">

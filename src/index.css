@@ -3,10 +3,6 @@
 @tailwind utilities;
 
 @layer base {
-  html, body {
-    max-width: 100vw;
-    overflow-x: hidden;
-  }
   body {
     background-color: #030712;
     background-image: linear-gradient(to bottom, rgba(3, 7, 18, 0.35), rgba(3, 7, 18, 0.55)), url('/bg-tyres.jpg');
